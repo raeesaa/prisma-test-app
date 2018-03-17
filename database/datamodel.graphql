@@ -1,0 +1,78 @@
+type Level1 { 
+  id: ID! @unique
+  name: String!
+  description: String
+  active: Boolean @default(value: "true")
+
+  children: [Level2!]!
+
+  comments: [Comment!]!
+}
+
+type Level2 { 
+  id: ID! @unique
+  name: String!
+  description: String
+  active: Boolean @default(value: "true")
+
+  parent: Level1
+  children: [Level3!]!
+
+  comments: [Comment!]!
+}
+
+type Level3 { 
+  id: ID! @unique
+  name: String!
+  description: String
+  active: Boolean @default(value: "true")
+
+  parent: Level2
+  children: [Level4!]!
+
+  comments: [Comment!]!
+}
+
+type Level4 { 
+  id: ID! @unique
+  name: String!
+  description: String
+  active: Boolean @default(value: "true")
+
+  parent: Level3
+  children: [Level5!]!
+
+  comments: [Comment!]!
+}
+
+type Level5 { 
+  id: ID! @unique
+  name: String!
+  description: String
+  active: Boolean @default(value: "true")
+
+  parent: Level4
+  children: [Level5!]!
+
+  comments: [Comment!]!
+}
+
+type Level6 {
+  id: ID! @unique
+  name: String!
+  description: String
+  active: Boolean @default(value: "true")
+
+  parent: Level5
+
+  comments: [Comment!]!
+}
+
+type Comment {
+  id: ID! @unique
+  name: String!
+  description: String
+  active: Boolean @default(value: "true")
+
+  comments: [Comment!]!
+}
